@@ -4,7 +4,7 @@ COPY . .
 RUN go build -mod=vendor -o bin/hello
 
 FROM alpine
-RUN apk --no-cache add ca-certificates
+RUN apk --no-cache add ca-certificates bash
 WORKDIR /root/
 COPY --from=builder /app/bin/hello /usr/local/bin/
 CMD ["hello"]
